@@ -20,7 +20,7 @@ from . import settings
 
 def _init():
     '''Basic configuration of the spectral package.'''
-    _setup_logger()
+    # _setup_logger()
     try:
         global settings
         from .graphics import graphics as spygraphics
