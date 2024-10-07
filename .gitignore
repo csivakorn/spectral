@@ -8,3 +8,5 @@ TAGS
 .project
 .pydevproject
 spectral_test_files/
+.DS_Store
+.ipynb_checkpoints/
