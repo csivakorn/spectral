@@ -425,15 +425,18 @@ class ImageViewMouseHandler(ImageViewCallback):
             return
         kp = KeyParser(event.key)
         if event.button == 1:
-            if event.dblclick and kp.key is None:
+            if event.dblclick and kp.key is None:  # Trace this dblclick event to flip switch
+                # print("Click")
                 if self.view.source is not None:
                     from spectral import settings
                     import matplotlib.pyplot as plt
                     if self.view.spectrum_plot_fig_id is None:
                         f = plt.figure()
                         self.view.spectrum_plot_fig_id = f.number
+                        print("Here")
                     try:
                         f = plt.figure(self.view.spectrum_plot_fig_id)
+                        print("We succeeded")
                     except:
                         f = plt.figure()
                         self.view.spectrum_plot_fig_id = f.number
