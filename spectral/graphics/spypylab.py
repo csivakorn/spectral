@@ -433,18 +433,19 @@ class ImageViewMouseHandler(ImageViewCallback):
                     if self.view.spectrum_plot_fig_id is None:
                         f = plt.figure()
                         self.view.spectrum_plot_fig_id = f.number
-                        print("Here")
+
                     try:
                         f = plt.figure(self.view.spectrum_plot_fig_id)
-                        print("We succeeded")
                     except:
                         f = plt.figure()
                         self.view.spectrum_plot_fig_id = f.number
                     s = f.gca()
-                    settings.plotter.plot(self.view.source[r, c],
+                    # print("Here")
+                    settings.plotter.plot(1-self.view.source[r, c],     # Changed to (1-reflection) to plot absorbance
                                           self.view.source)
                     s.xaxis.axes.relim()
                     s.xaxis.axes.autoscale(True)
+                    s.yaxis.axes.set_ylabel("Absorbance")
                     f.canvas.draw()
 
 
