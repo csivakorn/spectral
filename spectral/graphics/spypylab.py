@@ -426,7 +426,6 @@ class ImageViewMouseHandler(ImageViewCallback):
         kp = KeyParser(event.key)
         if event.button == 1:
             if event.dblclick and kp.key is None:  # Trace this dblclick event to flip switch
-                # print("Click")
                 if self.view.source is not None:
                     from spectral import settings
                     import matplotlib.pyplot as plt
@@ -441,11 +440,17 @@ class ImageViewMouseHandler(ImageViewCallback):
                         self.view.spectrum_plot_fig_id = f.number
                     s = f.gca()
                     # print("Here")
-                    settings.plotter.plot(1-self.view.source[r, c],     # Changed to (1-reflection) to plot absorbance
+                    # # To show absorbance
+                    # settings.plotter.plot(1-self.view.source[r, c],     # Changed to (1-reflection) to plot absorbance
+                    #                       self.view.source)
+                    # s.yaxis.axes.set_ylabel("Absorbance")
+                    # To show reflection
+                    settings.plotter.plot(self.view.source[r, c],     
                                           self.view.source)
+                    print(f"The chosen pixel is ({r},{c})")
+                    s.yaxis.axes.set_ylabel("Reflection")
                     s.xaxis.axes.relim()
                     s.xaxis.axes.autoscale(True)
-                    s.yaxis.axes.set_ylabel("Absorbance")
                     f.canvas.draw()
 
 
