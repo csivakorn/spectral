@@ -440,15 +440,15 @@ class ImageViewMouseHandler(ImageViewCallback):
                         self.view.spectrum_plot_fig_id = f.number
                     s = f.gca()
                     # print("Here")
-                    # # To show absorbance
-                    # settings.plotter.plot(1-self.view.source[r, c],     # Changed to (1-reflection) to plot absorbance
-                    #                       self.view.source)
-                    # s.yaxis.axes.set_ylabel("Absorbance")
-                    # To show reflection
-                    settings.plotter.plot(self.view.source[r, c],     
+                    # To show absorbance
+                    settings.plotter.plot(1-self.view.source[r, c],     # Changed to (1-reflection) to plot absorbance
                                           self.view.source)
+                    s.yaxis.axes.set_ylabel("Absorbance")
+                    # To show reflection
+                    # settings.plotter.plot(self.view.source[r, c],     
+                    #                       self.view.source)
+                    # s.yaxis.axes.set_ylabel("Reflection")
                     print(f"The chosen pixel is ({r},{c})")
-                    s.yaxis.axes.set_ylabel("Reflection")
                     s.xaxis.axes.relim()
                     s.xaxis.axes.autoscale(True)
                     f.canvas.draw()
